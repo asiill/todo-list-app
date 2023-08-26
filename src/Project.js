@@ -36,9 +36,8 @@ export default class Project {
         }
         this.tasks.push(task);
     }
-    deleteTask(task) {
-        let taskIndex = this.tasks.indexOf(task);
-        this.tasks.splice(taskIndex, 1);
+    deleteTask(taskTitle) {
+        this.tasks = this.tasks.filter(task => task.getTitle() !== taskTitle);
     }
 
 }

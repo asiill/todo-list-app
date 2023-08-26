@@ -29,7 +29,7 @@ export default class List {
         this.projects.push(project);
     }
     deleteProject(projectName) {
-        return this.projects.filter(project => project.getName() !== projectName);
+        this.projects = this.projects.filter(project => project.getName() !== projectName);
     }
 
 }

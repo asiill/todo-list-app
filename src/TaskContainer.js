@@ -1,4 +1,5 @@
 import ListStorage from "./ListStorage";
+import ProjectContainer from "./ProjectContainer";
 
 export default class TaskContainer {
     
@@ -41,6 +42,12 @@ export default class TaskContainer {
         const delTaskBtn = document.createElement("button");
         delTaskBtn.textContent = "Delete Task";
         delTaskBtn.classList.add("del-task-btn");
+
+        delTaskBtn.addEventListener("click", () => {
+            ListStorage.deleteTask(this.projectName, this.taskTitle);
+            let projectContainer = new ProjectContainer();
+            projectContainer.createProjectContainer();
+        })
     
         taskContainer.appendChild(taskTitle);
         taskContainer.appendChild(taskDescription);

@@ -24,9 +24,9 @@ export default class ListStorage {
         this.saveList(list);
     }
 
-    static deleteProject(project) {
+    static deleteProject(projectName) {
         let list = this.getList();
-        list.deleteProject(project);
+        list.deleteProject(projectName);
         this.saveList(list);
     }
 

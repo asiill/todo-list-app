@@ -11,8 +11,19 @@ export default class ProjectContainer {
 
         const content = document.getElementById("content");
 
-        const projectContainer = document.createElement("div");
-        projectContainer.classList.add("project-container");
+        let projectContainer;
+
+        if (document.body.contains(document.querySelector(".project-container"))) {
+            projectContainer = document.querySelector(".project-container");
+            projectContainer.textContent = "";
+            if (document.body.contains(document.querySelector(".task-container"))) {
+                let taskContainer = document.querySelector(".task-container");
+                taskContainer.textContent = "";
+            }
+        } else {
+            projectContainer = document.createElement("div");
+            projectContainer.classList.add("project-container");
+        }
     
         const projectHeader = document.createElement("div");
         projectHeader.classList.add("project-header");

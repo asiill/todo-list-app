@@ -8,8 +8,15 @@ export default class TaskContainer {
 
         const content = document.getElementById("content");
 
-        const taskContainer = document.createElement("div");
-        taskContainer.classList.add("task-container");
+        let taskContainer;
+
+        if (document.body.contains(document.querySelector(".task-container"))) {
+            taskContainer = document.querySelector(".task-container");
+            taskContainer.textContent = "";
+        } else {
+            taskContainer = document.createElement("div");
+            taskContainer.classList.add("task-container");
+        }
 
         const taskTitle = document.createElement("h2");
         taskTitle.classList.add("task-title");

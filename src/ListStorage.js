@@ -10,7 +10,6 @@ export default class ListStorage {
 
     static getList() {
         let list = Object.assign(new List(), JSON.parse(localStorage.getItem("list")));
-        console.log(list);
 
         list.setProjects(list.getProjects().map(project => Object.assign(new Project(), project)));
 

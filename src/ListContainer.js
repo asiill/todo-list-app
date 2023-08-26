@@ -51,6 +51,7 @@ export default class ListContainer {
             el.textContent = project.getName();
             el.addEventListener("click", () => {
                 let projectContainer = (new ProjectContainer(project)).createProjectContainer();
+                el.classList.add("active");
             });
             projectList.appendChild(el);
         }

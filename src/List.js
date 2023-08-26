@@ -28,9 +28,8 @@ export default class List {
         }
         this.projects.push(project);
     }
-    deleteProject(project) {
-        let projectIndex = this.projects.indexOf(project);
-        this.projects.splice(projectIndex, 1);
+    deleteProject(projectName) {
+        return this.projects.filter(project => project.getName() !== projectName);
     }
 
 }

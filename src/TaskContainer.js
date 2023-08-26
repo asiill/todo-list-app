@@ -1,7 +1,11 @@
+import ListStorage from "./ListStorage";
+
 export default class TaskContainer {
     
-    constructor(task) {
-        this.task = task;
+    constructor() {
+        this.taskTitle = document.querySelector(".active-task").textContent;
+        this.projectName = document.querySelector(".active-project").textContent;
+        this.task = ListStorage.getList().getProject(this.projectName).getTask(this.taskTitle);
     }
 
     createTaskContainer() {

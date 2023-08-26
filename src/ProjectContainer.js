@@ -1,10 +1,12 @@
 import TaskForm from "./TaskForm.js";
 import TaskContainer from "./TaskContainer.js";
+import ListStorage from "./ListStorage.js";
 
 export default class ProjectContainer {
 
-    constructor(project) {
-        this.project = project;
+    constructor() {
+        this.projectName = document.querySelector(".active-project").textContent;
+        this.project = ListStorage.getList().getProject(this.projectName);
     }
 
     createProjectContainer() {
@@ -30,7 +32,7 @@ export default class ProjectContainer {
     
         const projectName = document.createElement("h1");
         projectName.classList.add("project-name");
-        projectName.textContent = this.project.getName();
+        projectName.textContent = this.projectName;
     
         const tasksRemaining = document.createElement("p");
         tasksRemaining.classList.add("tasks-remaining");
@@ -38,7 +40,7 @@ export default class ProjectContainer {
         const taskList = this.showTasks();
         taskList.classList.add("task-list");
 
-        const taskForm = (new TaskForm(this.project)).createTaskForm();
+        const taskForm = (new TaskForm()).createTaskForm();
 
         const addTaskBtn = document.createElement("button");
         addTaskBtn.textContent = "Add task";
@@ -84,7 +86,15 @@ export default class ProjectContainer {
             const el = document.createElement("button");
             el.textContent = task.getTitle();
             el.addEventListener ("click", () => {
-                let taskContainer = (new TaskContainer(task)).createTaskContainer();
+
+                if (document.body.contains(document.querySelector(".active-task"))) {
+                    let activeTask = document.querySelector(".active-task");
+                    activeTask.classList.remove("active-task");
+                }
+
+                el.classList.add("active-task");
+                let taskContainer = new TaskContainer();
+                taskContainer.createTaskContainer();
             })
             taskList.appendChild(el);
         }

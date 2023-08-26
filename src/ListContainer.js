@@ -1,18 +1,33 @@
 import ProjectForm from "./ProjectForm.js";
 import ProjectContainer from "./ProjectContainer.js";
+import ListStorage from "./ListStorage.js";
 
 export default class ListContainer {
 
-    constructor(list) {
-        this.list = list;
+    constructor() {
+        this.list = ListStorage.getList();
     }
 
     createListContainer() {
 
         const content = document.getElementById("content");
 
-        const listContainer = document.createElement("div");
-        listContainer.classList.add("list-container");
+        let listContainer;
+        if (document.body.contains(document.querySelector(".list-container"))) {
+            listContainer = document.querySelector(".list-container");
+            listContainer.textContent = "";
+            if (document.body.contains(document.querySelector(".project-container"))) {
+                let projectContainer = document.querySelector(".project-container");
+                projectContainer.textContent = "";
+            }
+            if (document.body.contains(document.querySelector(".task-container"))) {
+                let taskContainer = document.querySelector(".task-container");
+                taskContainer.textContent = "";
+            }
+        } else {
+            listContainer = document.createElement("div");
+            listContainer.classList.add("list-container");
+        }
 
         const listHeader = document.createElement("h1");
         listHeader.classList.add("list-header");
@@ -21,7 +36,7 @@ export default class ListContainer {
         const projectList = this.showProjects();
         projectList.classList.add("project-list");
 
-        const projectForm = (new ProjectForm(this.list)).createProjectForm();
+        const projectForm = (new ProjectForm()).createProjectForm();
 
         const addProjectBtn = document.createElement("button");
         addProjectBtn.textContent = "Add project";
@@ -50,8 +65,15 @@ export default class ListContainer {
             const el = document.createElement("button");
             el.textContent = project.getName();
             el.addEventListener("click", () => {
-                let projectContainer = (new ProjectContainer(project)).createProjectContainer();
-                el.classList.add("active");
+                
+                if (document.body.contains(document.querySelector(".active-project"))) {
+                    let activeProject = document.querySelector(".active-project");
+                    activeProject.classList.remove("active-project");
+                }
+
+                el.classList.add("active-project");
+                let projectContainer = new ProjectContainer();
+                projectContainer.createProjectContainer();
             });
             projectList.appendChild(el);
         }

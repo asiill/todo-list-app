@@ -1,10 +1,10 @@
 import Project from "./Project.js";
+import ListContainer from "./ListContainer.js";
 import ListStorage from "./ListStorage.js";
 
 export default class ProjectForm {
 
-    constructor(list) {
-        this.list = list;
+    constructor() {
         this.projectForm = document.createElement("form");
     }
 
@@ -18,6 +18,8 @@ export default class ProjectForm {
         let project = new Project(name);
 
         ListStorage.addProject(project);
+        let listContainer = new ListContainer();
+        listContainer.createListContainer();
 
         this.resetProjectForm();
     }

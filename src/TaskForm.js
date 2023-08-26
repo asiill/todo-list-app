@@ -1,10 +1,10 @@
 import Task from "./Task.js";
+import ProjectContainer from "./ProjectContainer.js";
 import ListStorage from "./ListStorage.js";
 
 export default class TaskForm {
 
-    constructor(project) {
-        this.project = project;
+    constructor() {
         this.taskForm = document.createElement("form");
     }
 
@@ -20,7 +20,10 @@ export default class TaskForm {
         let priority = this.taskForm.priority.value;
         let task = new Task(title, description, dueDate, priority);
 
-        ListStorage.addTask(this.project.getName(), task);
+        let projectName = document.querySelector(".project-name").textContent;
+        ListStorage.addTask(projectName, task);
+        let projectContainer = new ProjectContainer();
+        projectContainer.createProjectContainer();
 
         this.resetTaskForm();
     }

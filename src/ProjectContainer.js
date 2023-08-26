@@ -1,6 +1,7 @@
 import TaskForm from "./TaskForm.js";
 import TaskContainer from "./TaskContainer.js";
 import ListStorage from "./ListStorage.js";
+import ListContainer from "./ListContainer.js";
 
 export default class ProjectContainer {
 
@@ -56,6 +57,12 @@ export default class ProjectContainer {
         const delProjectBtn = document.createElement("button");
         delProjectBtn.textContent = "Delete Project";
         delProjectBtn.classList.add("del-project-btn");
+
+        delProjectBtn.addEventListener("click", () => {
+            ListStorage.deleteProject(this.projectName);
+            let listContainer = new ListContainer();
+            listContainer.createListContainer();
+        });
 
         addTaskBtn.addEventListener("click", () => {
             taskForm.style.display = "block";

@@ -44,18 +44,25 @@ export default class TaskContainer {
 
         const taskCompleteBtn = document.createElement("button");
         taskCompleteBtn.classList.add("task-complete-btn");
-        taskCompleteBtn.textContent = "Mark as complete";
+        
+        if (this.task.getComplete() === true) {
+            taskCompleteBtn.textContent = "Mark as incomplete";
+        } else {
+            taskCompleteBtn.textContent = "Mark as complete";
+        }
 
         taskCompleteBtn.addEventListener("click", () => {
             let activeTask = document.querySelector(".active-task");
             if (activeTask.classList.contains("task-incomplete")) {
                 activeTask.classList.remove("task-incomplete");
                 activeTask.classList.add("task-complete");
-                taskCompleteBtn.textContent = "Mark as complete";
+                taskCompleteBtn.textContent = "Mark as incomplete";
+                ListStorage.setTaskComplete(this.projectName, this.taskTitle, true);
             } else {
                 activeTask.classList.remove("task-complete");
                 activeTask.classList.add("task-incomplete");
-                taskCompleteBtn.textContent = "Mark as incomplete";
+                taskCompleteBtn.textContent = "Mark as complete";
+                ListStorage.setTaskComplete(this.projectName, this.taskTitle, false);
             }
         });
     

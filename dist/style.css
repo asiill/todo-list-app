@@ -120,9 +120,9 @@ body {
 }
 
 .task-incomplete {
-    color: red;
+    
 }
 
 .task-complete {
-
+    text-decoration: line-through;
 }

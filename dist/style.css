@@ -46,7 +46,8 @@ body {
 }
 
 .project-header {
-
+    display: flex;
+    gap: 5px;
 }
 
 .project-name {
@@ -54,7 +55,8 @@ body {
 }
 
 .tasks-remaining {
-
+    font-size: 12px;
+    color: gray;
 }
 
 .task-list {

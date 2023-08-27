@@ -78,7 +78,7 @@ body {
 }
 
 .active-task {
-    
+
 }
 
 /* Task Container */
@@ -107,6 +107,22 @@ body {
 
 }
 
+.taskActions {
+    display: flex;
+}
+
+.task-complete-btn {
+
+}
+
 .del-task-btn {
+
+}
+
+.task-incomplete {
+    color: red;
+}
+
+.task-complete {
 
 }

@@ -9,6 +9,7 @@ export default class Task {
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.complete = false;
     }
 
     getTitle() {
@@ -37,5 +38,12 @@ export default class Task {
     }
     setPriority(priority) {
         this.priority = priority;
+    }
+
+    getComplete() {
+        return this.complete;
+    }
+    setComplete(value) {
+        this.complete = value;
     }
 }

@@ -39,8 +39,8 @@ export default class ListContainer {
         const projectForm = (new ProjectForm()).createProjectForm();
 
         const addProjectBtn = document.createElement("button");
-        addProjectBtn.textContent = "Add project";
         addProjectBtn.classList.add("add-project-btn");
+        addProjectBtn.textContent = "+ new project";
 
         addProjectBtn.addEventListener("click", () => {
             projectForm.style.display = "block";

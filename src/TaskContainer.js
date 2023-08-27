@@ -1,5 +1,5 @@
-import ListStorage from "./ListStorage";
 import ProjectContainer from "./ProjectContainer";
+import ListStorage from "./ListStorage";
 
 export default class TaskContainer {
     
@@ -14,7 +14,6 @@ export default class TaskContainer {
         const content = document.getElementById("content");
 
         let taskContainer;
-
         if (document.body.contains(document.querySelector(".task-container"))) {
             taskContainer = document.querySelector(".task-container");
             taskContainer.textContent = "";
@@ -52,17 +51,10 @@ export default class TaskContainer {
         }
 
         taskCompleteBtn.addEventListener("click", () => {
-            let activeTask = document.querySelector(".active-task");
-            if (activeTask.classList.contains("task-incomplete")) {
-                activeTask.classList.remove("task-incomplete");
-                activeTask.classList.add("task-complete");
+            if (this.checkTaskComplete()) {
                 taskCompleteBtn.textContent = "Mark as incomplete";
-                ListStorage.setTaskComplete(this.projectName, this.taskTitle, true);
             } else {
-                activeTask.classList.remove("task-complete");
-                activeTask.classList.add("task-incomplete");
                 taskCompleteBtn.textContent = "Mark as complete";
-                ListStorage.setTaskComplete(this.projectName, this.taskTitle, false);
             }
         });
     
@@ -71,10 +63,8 @@ export default class TaskContainer {
         delTaskBtn.classList.add("del-task-btn");
 
         delTaskBtn.addEventListener("click", () => {
-            ListStorage.deleteTask(this.projectName, this.taskTitle);
-            let projectContainer = new ProjectContainer();
-            projectContainer.createProjectContainer();
-        })
+            this.deleteActiveTask();
+        });
 
         taskActions.appendChild(taskCompleteBtn);
         taskActions.appendChild(delTaskBtn);
@@ -87,6 +77,51 @@ export default class TaskContainer {
     
         content.appendChild(taskContainer);
         
+    }
+
+    updateTasksRemaining() {
+        let project = ListStorage.getList().getProject(this.projectName);
+        let tasks = project.getTasks();
+        let taskCount = tasks.length;
+        let incompleteTaskCount = tasks.filter(task => !task.getComplete()).length;
+
+        let tasksRemaining = document.querySelector(".tasks-remaining");
+        if (taskCount === 0) {
+            tasksRemaining.textContent = "No tasks assigned";
+        } else {
+            if (incompleteTaskCount === 0) {
+                tasksRemaining.textContent = "All tasks are complete!";
+            } else if (incompleteTaskCount === 1) {
+                tasksRemaining.textContent = incompleteTaskCount + " task remaining";
+            } else {
+                tasksRemaining.textContent = incompleteTaskCount + " tasks remaining";
+            }
+        }
+    }
+
+    checkTaskComplete() {
+        let complete;
+        let activeTask = document.querySelector(".active-task");
+        if (activeTask.classList.contains("task-incomplete")) {
+            activeTask.classList.remove("task-incomplete");
+            activeTask.classList.add("task-complete");
+            ListStorage.setTaskComplete(this.projectName, this.taskTitle, true);
+            this.updateTasksRemaining();
+            complete = true;
+        } else {
+            activeTask.classList.remove("task-complete");
+            activeTask.classList.add("task-incomplete");
+            ListStorage.setTaskComplete(this.projectName, this.taskTitle, false);
+            this.updateTasksRemaining();
+            complete = false;
+        }
+        return complete;
+    }
+
+    deleteActiveTask() {
+        ListStorage.deleteTask(this.projectName, this.taskTitle);
+        let projectContainer = new ProjectContainer();
+        projectContainer.createProjectContainer();
     }
 
 }

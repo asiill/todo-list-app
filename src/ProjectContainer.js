@@ -1,7 +1,7 @@
 import TaskForm from "./TaskForm.js";
 import TaskContainer from "./TaskContainer.js";
-import ListStorage from "./ListStorage.js";
 import ListContainer from "./ListContainer.js";
+import ListStorage from "./ListStorage.js";
 
 export default class ProjectContainer {
 
@@ -15,7 +15,6 @@ export default class ProjectContainer {
         const content = document.getElementById("content");
 
         let projectContainer;
-
         if (document.body.contains(document.querySelector(".project-container"))) {
             projectContainer = document.querySelector(".project-container");
             projectContainer.textContent = "";
@@ -35,7 +34,7 @@ export default class ProjectContainer {
         projectName.classList.add("project-name");
         projectName.textContent = this.projectName;
     
-        const tasksRemaining = document.createElement("p");
+        const tasksRemaining = this.showRemainingTasks();
         tasksRemaining.classList.add("tasks-remaining");
 
         const taskList = this.showTasks();
@@ -44,7 +43,7 @@ export default class ProjectContainer {
         const taskForm = (new TaskForm()).createTaskForm();
 
         const addTaskBtn = document.createElement("button");
-        addTaskBtn.textContent = "Add task";
+        addTaskBtn.textContent = "+ new task";
         addTaskBtn.classList.add("add-task-btn");
 
         const projectActions = document.createElement("div");
@@ -87,6 +86,7 @@ export default class ProjectContainer {
         let tasks = this.project.getTasks();
 
         const taskList = document.createElement("div");
+
         for (let i = 0; i < tasks.length; i++) {
             let task = tasks[i];
 
@@ -110,7 +110,37 @@ export default class ProjectContainer {
             })
             taskList.appendChild(el);
         }
+
         return taskList;
     }
     
+    showRemainingTasks() {
+        let tasks = this.project.getTasks();
+        let taskCount = tasks.length;
+        let incompleteTaskCount = tasks.filter(task => !task.getComplete()).length;
+
+        const tasksRemaining = document.createElement("p");
+        if (taskCount === 0) {
+            tasksRemaining.textContent = "No tasks assigned";
+        } else {
+            if (incompleteTaskCount === 0) {
+                tasksRemaining.textContent = "All tasks are complete!";
+            } else if (incompleteTaskCount === 1) {
+                tasksRemaining.textContent = incompleteTaskCount + " task remaining";
+            } else {
+                tasksRemaining.textContent = incompleteTaskCount + " tasks remaining";
+            }
+        }
+
+        return tasksRemaining;
+    }
+
+    clearCompletedTasks() {
+        let tasks = this.project.getTasks();
+        let completeTasks = tasks.filter(task => task.getComplete());
+        for (i = 0; i < completeTasks.length; i++) {
+            let task = completeTasks[i];
+            ListStorage.deleteTask(this.projectName, task.getTitle());
+        }
+    }
 }

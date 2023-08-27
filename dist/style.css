@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+}
+
+#content {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* List Container */
+
+.listContainer {
+
+}
+
+.listHeader {
+
+}
+
+.project-list {
+
+}
+
+.add-project-btn {
+
+}
+
+.active-project {
+
+}
+
+/* Project Container */
+
+#project-form {
+
+}
+
+.project-container {
+
+}
+
+.project-header {
+
+}
+
+.project-name {
+
+}
+
+.tasks-remaining {
+
+}
+
+.task-list {
+
+}
+
+.add-task-btn {
+
+}
+
+.project-actions {
+
+}
+
+.clear-completed-btn {
+
+}
+
+.del-project-btn {
+
+}
+
+.active-task {
+    
+}
+
+/* Task Container */
+
+#task-form{
+
+}
+
+.task-container {
+
+}
+
+.task-title {
+
+}
+
+.task-description {
+
+}
+
+.task-due-date {
+
+}
+
+.task-priority {
+
+}
+
+.del-task-btn {
+
+}

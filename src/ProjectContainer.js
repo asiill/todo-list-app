@@ -91,6 +91,7 @@ export default class ProjectContainer {
             let task = tasks[i];
 
             const el = document.createElement("button");
+            el.classList.add("task-incompelte");
             el.textContent = task.getTitle();
             el.addEventListener ("click", () => {
 

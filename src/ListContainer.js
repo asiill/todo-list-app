@@ -65,7 +65,7 @@ export default class ListContainer {
             const el = document.createElement("button");
             el.textContent = project.getName();
             el.addEventListener("click", () => {
-                
+
                 if (document.body.contains(document.querySelector(".active-project"))) {
                     let activeProject = document.querySelector(".active-project");
                     activeProject.classList.remove("active-project");

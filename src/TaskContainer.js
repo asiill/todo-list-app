@@ -38,6 +38,26 @@ export default class TaskContainer {
         const taskPriority = document.createElement("p");
         taskPriority.classList.add("task-priority");
         taskPriority.textContent = this.task.getPriority();
+
+        const taskActions = document.createElement("div");
+        taskActions.classList.add("task-actions");
+
+        const taskCompleteBtn = document.createElement("button");
+        taskCompleteBtn.classList.add("task-complete-btn");
+        taskCompleteBtn.textContent = "Mark as complete";
+
+        taskCompleteBtn.addEventListener("click", () => {
+            let activeTask = document.querySelector(".active-task");
+            if (activeTask.classList.contains("task-incomplete")) {
+                activeTask.classList.remove("task-incomplete");
+                activeTask.classList.add("task-complete");
+                taskCompleteBtn.textContent = "Mark as complete";
+            } else {
+                activeTask.classList.remove("task-complete");
+                activeTask.classList.add("task-incomplete");
+                taskCompleteBtn.textContent = "Mark as incomplete";
+            }
+        });
     
         const delTaskBtn = document.createElement("button");
         delTaskBtn.textContent = "Delete Task";
@@ -48,12 +68,15 @@ export default class TaskContainer {
             let projectContainer = new ProjectContainer();
             projectContainer.createProjectContainer();
         })
+
+        taskActions.appendChild(taskCompleteBtn);
+        taskActions.appendChild(delTaskBtn);
     
         taskContainer.appendChild(taskTitle);
         taskContainer.appendChild(taskDescription);
         taskContainer.appendChild(taskDueDate);
         taskContainer.appendChild(taskPriority);
-        taskContainer.appendChild(delTaskBtn);
+        taskContainer.appendChild(taskActions);
     
         content.appendChild(taskContainer);
         

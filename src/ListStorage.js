@@ -36,9 +36,15 @@ export default class ListStorage {
         this.saveList(list);
     }
 
-    static deleteTask(projectName, taskName) {
+    static deleteTask(projectName, taskTitle) {
         let list = this.getList();
-        list.getProject(projectName).deleteTask(taskName);
+        list.getProject(projectName).deleteTask(taskTitle);
+        this.saveList(list);
+    }
+
+    static setTaskComplete(projectName, taskTitle, value) {
+        let list = this.getList();
+        list.getProject(projectName).getTask(taskTitle).setComplete(value);
         this.saveList(list);
     }
 

@@ -9,7 +9,7 @@ export default class Task {
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
-        this.complete = false;
+        this.isComplete = false;
     }
 
     getTitle() {
@@ -40,10 +40,10 @@ export default class Task {
         this.priority = priority;
     }
 
-    getComplete() {
-        return this.complete;
+    getIsComplete() {
+        return this.isComplete;
     }
-    setComplete(value) {
-        this.complete = value;
+    setIsComplete(value) {
+        this.isComplete = value;
     }
 }

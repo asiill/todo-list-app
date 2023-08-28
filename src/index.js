@@ -1,4 +1,3 @@
-import ListContainer from "./ListContainer.js";
+import createListContainer from "./listContainer.js";
 
-let listContainer = new ListContainer();
-listContainer.createListContainer();
+createListContainer();

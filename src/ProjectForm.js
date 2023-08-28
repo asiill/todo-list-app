@@ -1,9 +1,8 @@
 import Project from "./Project.js";
-import ListContainer from "./ListContainer.js";
 import ListStorage from "./ListStorage.js";
+import createListContainer from "./listContainer.js";
 
 export default class ProjectForm {
-
     constructor() {
         this.projectForm = document.createElement("form");
     }
@@ -18,14 +17,11 @@ export default class ProjectForm {
         let project = new Project(name);
 
         ListStorage.addProject(project);
-        let listContainer = new ListContainer();
-        listContainer.createListContainer();
-
+        createListContainer();
         this.resetProjectForm();
     }
 
     createProjectForm() {
-
         this.projectForm.setAttribute("id", "project-form");
         this.projectForm.setAttribute("action", "''");
         this.projectForm.setAttribute("method", "get");
@@ -42,16 +38,11 @@ export default class ProjectForm {
 
         this.projectForm.appendChild(name);
         this.projectForm.appendChild(submitProject);
-
         this.projectForm.style.display = "none";
-
         this.projectForm.addEventListener("submit", (e) => {
             e.preventDefault();
             this.addProjectToList();
         });
-
         return this.projectForm;
-
     }
-    
 }

@@ -1,9 +1,8 @@
 import Task from "./Task.js";
-import ProjectContainer from "./ProjectContainer.js";
 import ListStorage from "./ListStorage.js";
+import createProjectContainer from "./projectContainer.js";
 
 export default class TaskForm {
-
     constructor() {
         this.taskForm = document.createElement("form");
     }
@@ -19,17 +18,14 @@ export default class TaskForm {
         let dueDate = this.taskForm.dueDate.value;
         let priority = this.taskForm.priority.value;
         let task = new Task(title, description, dueDate, priority);
-
         let projectName = document.querySelector(".project-name").textContent;
-        ListStorage.addTask(projectName, task);
-        let projectContainer = new ProjectContainer();
-        projectContainer.createProjectContainer();
 
+        ListStorage.addTask(projectName, task);
+        createProjectContainer();
         this.resetTaskForm();
     }
 
     createTaskForm() {
-
         this.taskForm.setAttribute("id", "task-form");
         this.taskForm.setAttribute("action", "''");
         this.taskForm.setAttribute("method", "get");
@@ -67,16 +63,11 @@ export default class TaskForm {
         this.taskForm.appendChild(dueDate);
         this.taskForm.appendChild(priority);
         this.taskForm.appendChild(submitTask);
-
         this.taskForm.style.display = "none";
-
         this.taskForm.addEventListener("submit", (e) => {
             e.preventDefault();
             this.addTaskToProject();
         });
-
         return this.taskForm;
-
     }
-    
 }

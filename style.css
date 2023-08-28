@@ -7,24 +7,27 @@ body {
 }
 
 #content {
-
-    display: flex;
-    flex-direction: column;
-
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 40px;
 }
 
 /* List Container */
 
-.listContainer {
-
+.list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.listHeader {
-
+.list-header {
 }
 
 .project-list {
-
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .add-project-btn {
@@ -32,17 +35,19 @@ body {
 }
 
 .active-project {
-
+    font-weight: bold;
 }
 
 /* Project Container */
 
 #project-form {
-
+    
 }
 
 .project-container {
-
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .project-header {
@@ -60,7 +65,9 @@ body {
 }
 
 .task-list {
-
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .add-task-btn {
@@ -68,7 +75,8 @@ body {
 }
 
 .project-actions {
-
+    display: flex;
+    gap: 5px;
 }
 
 .clear-completed-btn {
@@ -80,17 +88,21 @@ body {
 }
 
 .active-task {
-
+    font-weight: bold;
 }
 
 /* Task Container */
 
-#task-form{
-
+#task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .task-container {
-
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .task-title {
@@ -109,8 +121,9 @@ body {
 
 }
 
-.taskActions {
+.task-actions {
     display: flex;
+    gap: 5px;
 }
 
 .task-complete-btn {
@@ -127,4 +140,25 @@ body {
 
 .task-complete {
     text-decoration: line-through;
+}
+
+/* Task Form and Project Form */
+
+form>input {
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 3px;
+    width: 100%;
+    margin: 5px;
+    padding: 7px;
+    font-size: 12px;
+}
+  
+form>input:focus {
+    border: 1px solid #2e2ea1;
+}
+  
+form>input:invalid {
+    border: 1px solid #db1919;
+    color: #db1919;
 }

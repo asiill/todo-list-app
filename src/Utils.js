@@ -121,4 +121,14 @@ export default class Utils {
         }
         return isComplete;
     }
+
+    static clearCompletedTasks() {
+        let tasks = this.getActiveProject().getTasks();
+        let completeTasks = tasks.filter(task => task.getIsComplete());
+        for (let i = 0; i < completeTasks.length; i++) {
+            let task = completeTasks[i];
+            ListStorage.deleteTask(this.getActiveName(), task.getTitle());
+            createProjectContainer();
+        }
+    }
 }

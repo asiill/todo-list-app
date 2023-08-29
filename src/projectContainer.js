@@ -40,27 +40,37 @@ export default function createProjectContainer() {
     const projectActions = document.createElement("div");
     projectActions.classList.add("project-actions");
 
-    const clearCompletedBtn = document.createElement("button");
-    clearCompletedBtn.textContent = "Clear completed tasks";
-    clearCompletedBtn.classList.add("clear-completed-btn");
+    const editProjectBtn = document.createElement("button");
+    editProjectBtn.textContent = "Edit project";
+    editProjectBtn.classList.add("edit-project-btn");
 
     const delProjectBtn = document.createElement("button");
     delProjectBtn.textContent = "Delete Project";
     delProjectBtn.classList.add("del-project-btn");
 
+    const clearCompletedBtn = document.createElement("button");
+    clearCompletedBtn.textContent = "Clear completed tasks";
+    clearCompletedBtn.classList.add("clear-completed-btn");
+
+    addTaskBtn.addEventListener("click", () => {
+        taskForm.style.display = "block";
+    });
+    
+
     delProjectBtn.addEventListener("click", () => {
         Utils.deleteActiveProject();
     });
 
-    addTaskBtn.addEventListener("click", () => {
-        taskForm.style.display = "block";
+    clearCompletedBtn.addEventListener("click", () => {
+        Utils.clearCompletedTasks();
     });
 
     projectHeader.appendChild(projectName);
     projectHeader.appendChild(tasksRemaining);
 
-    projectActions.appendChild(clearCompletedBtn);
+    projectActions.appendChild(editProjectBtn);
     projectActions.appendChild(delProjectBtn);
+    projectActions.appendChild(clearCompletedBtn);
 
     projectContainer.appendChild(projectHeader);
     projectContainer.appendChild(taskList);

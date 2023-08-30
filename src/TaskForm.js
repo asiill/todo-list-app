@@ -21,7 +21,7 @@ export default class TaskForm {
         let priority = this.taskForm.priority.value;
 
         if (!Utils.validateDueDate(dueDate)) {
-            this.taskForm.children[3].textContent = "Please enter a valid due date: yyyy/mm/dd";
+            this.taskForm.children[3].textContent = "*Please enter a valid due date: yyyy/mm/dd";
             return;
         } else {
             let task = new Task(title, description, dueDate, priority);

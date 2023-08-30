@@ -126,6 +126,10 @@ body {
 
 }
 
+.task-priority:empty, .task-description:empty {
+    display: none;
+}
+
 .task-actions {
     display: flex;
     gap: 5px;

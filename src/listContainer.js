@@ -10,11 +10,11 @@ export default function createListContainer() {
         listContainer.textContent = "";
         if (document.body.contains(document.querySelector(".project-container"))) {
             let projectContainer = document.querySelector(".project-container");
-            projectContainer.textContent = "";
+            content.removeChild(projectContainer);
         }
         if (document.body.contains(document.querySelector(".task-container"))) {
             let taskContainer = document.querySelector(".task-container");
-            taskContainer.textContent = "";
+            content.removeChild(taskContainer);
         }
     } else {
         listContainer = document.createElement("div");

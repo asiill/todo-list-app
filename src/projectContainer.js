@@ -11,7 +11,7 @@ export default function createProjectContainer() {
         projectContainer.textContent = "";
         if (document.body.contains(document.querySelector(".task-container"))) {
             let taskContainer = document.querySelector(".task-container");
-            taskContainer.textContent = "";
+            content.removeChild(taskContainer);
         }
     } else {
         projectContainer = document.createElement("div");

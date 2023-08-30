@@ -45,8 +45,7 @@ export default class TaskForm {
         title.setAttribute("placeholder", "title");
         title.required = true;
 
-        const description = document.createElement("input");
-        description.setAttribute("type", "text");
+        const description = document.createElement("textarea");
         description.setAttribute("name", "description");
         description.setAttribute("id", "description");
         description.setAttribute("placeholder", "description");

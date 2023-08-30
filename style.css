@@ -149,7 +149,7 @@ body {
 
 /* Task Form and Project Form */
 
-form>input {
+form>input,textarea {
     background-color: #FFFFFF;
     border: 1px solid #E5E7EB;
     border-radius: 3px;
@@ -159,7 +159,7 @@ form>input {
     font-size: 12px;
 }
   
-form>input:focus {
+form>input,textarea:focus {
     border: 1px solid #2e2ea1;
 }
   

@@ -117,11 +117,6 @@ body {
 
 }
 
-#date-error {
-    font-size: 12px;
-    color: red;
-}
-
 .task-priority {
 
 }
@@ -170,4 +165,21 @@ form>input,textarea:focus {
 form>input:invalid {
     border: 1px solid #db1919;
     color: #db1919;
+}
+
+form>button {
+    margin: 5px;
+    padding: 7px;
+    font-size: 12px;
+}
+
+#date-error {
+    font-size: 12px;
+    color: red;
+    margin: 5px;
+    padding: 7px;
+}
+
+#date-error:empty {
+    display: none;
 }

@@ -104,22 +104,25 @@ export default class Utils {
     }
 
     static isTaskComplete() {
-        let isComplete;
         let activeTask = document.querySelector(".active-task");
+        let taskTitle = document.querySelector(".task-title");
         if (activeTask.classList.contains("task-incomplete")) {
             activeTask.classList.remove("task-incomplete");
+            taskTitle.classList.remove("task-incomplete");
             activeTask.classList.add("task-complete");
+            taskTitle.classList.add("task-complete");
             ListStorage.setTaskIsComplete(this.getActiveName(), this.getActiveTitle(), true);
             this.updateTasksRemaining();
-            isComplete = true;
+            return true;
         } else {
             activeTask.classList.remove("task-complete");
+            taskTitle.classList.remove("task-complete");
             activeTask.classList.add("task-incomplete");
+            taskTitle.classList.add("task-incomplete");
             ListStorage.setTaskIsComplete(this.getActiveName(), this.getActiveTitle(), false);
             this.updateTasksRemaining();
-            isComplete = false;
+            return false;
         }
-        return isComplete;
     }
 
     static clearCompletedTasks() {
@@ -129,6 +132,21 @@ export default class Utils {
             let task = completeTasks[i];
             ListStorage.deleteTask(this.getActiveName(), task.getTitle());
             createProjectContainer();
+        }
+    }
+
+    static validateDueDate(date) {
+        let currentDate = new Date();
+        let dueDate = new Date(date);
+
+        if (!isNaN(dueDate)) {
+            if (!(dueDate < currentDate)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
     }
 }

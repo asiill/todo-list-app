@@ -34,12 +34,19 @@ export default function createTaskContainer() {
 
     const taskCompleteBtn = document.createElement("button");
     taskCompleteBtn.classList.add("task-complete-btn");
-    
     if (task.getIsComplete()) {
         taskCompleteBtn.textContent = "Mark as incomplete";
     } else {
         taskCompleteBtn.textContent = "Mark as complete";
     }
+
+    const editTaskBtn = document.createElement("button");
+    editTaskBtn.textContent = "Edit task";
+    editTaskBtn.classList.add("edit-task-btn");
+
+    const delTaskBtn = document.createElement("button");
+    delTaskBtn.textContent = "Delete task";
+    delTaskBtn.classList.add("del-task-btn");
 
     taskCompleteBtn.addEventListener("click", () => {
         if (Utils.isTaskComplete()) {
@@ -49,9 +56,6 @@ export default function createTaskContainer() {
         }
     });
 
-    const delTaskBtn = document.createElement("button");
-    delTaskBtn.textContent = "Delete Task";
-    delTaskBtn.classList.add("del-task-btn");
     delTaskBtn.addEventListener("click", () => {
         Utils.deleteActiveTask();
     });

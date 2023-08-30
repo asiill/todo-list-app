@@ -25,19 +25,20 @@ export default class ProjectForm {
         this.projectForm.setAttribute("id", "project-form");
         this.projectForm.setAttribute("action", "''");
         this.projectForm.setAttribute("method", "get");
-
+        
         const name = document.createElement("input");
         name.setAttribute("type", "text");
         name.setAttribute("name", "name");
         name.setAttribute("id", "name");
         name.setAttribute("placeholder", "project name");
+        name.required = true;
 
-        const submitProject = document.createElement("button");
-        submitProject.setAttribute("type", "submit");
-        submitProject.textContent = "Submit";
+        const submitProjectBtn = document.createElement("button");
+        submitProjectBtn.setAttribute("type", "submit");
+        submitProjectBtn.textContent = "Submit";
 
         this.projectForm.appendChild(name);
-        this.projectForm.appendChild(submitProject);
+        this.projectForm.appendChild(submitProjectBtn);
         this.projectForm.style.display = "none";
         this.projectForm.addEventListener("submit", (e) => {
             e.preventDefault();

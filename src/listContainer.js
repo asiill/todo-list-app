@@ -39,8 +39,8 @@ export default function createListContainer() {
 
     listContainer.appendChild(listHeader);
     listContainer.appendChild(projectList);
-    listContainer.appendChild(projectForm);
     listContainer.appendChild(addProjectBtn);
+    listContainer.appendChild(projectForm);
 
     content.appendChild(listContainer);
 }

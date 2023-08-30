@@ -55,7 +55,6 @@ export default function createProjectContainer() {
     addTaskBtn.addEventListener("click", () => {
         taskForm.style.display = "block";
     });
-    
 
     delProjectBtn.addEventListener("click", () => {
         Utils.deleteActiveProject();
@@ -74,9 +73,9 @@ export default function createProjectContainer() {
 
     projectContainer.appendChild(projectHeader);
     projectContainer.appendChild(taskList);
-    projectContainer.appendChild(taskForm);
     projectContainer.appendChild(addTaskBtn);
     projectContainer.appendChild(projectActions);
+    projectContainer.appendChild(taskForm);
 
     content.appendChild(projectContainer);
 }

@@ -3,7 +3,6 @@ import Project from "./Project.js";
 import Task from "./Task.js";
 
 export default class ListStorage {
-
     static saveList(list) {
         localStorage.setItem("list", JSON.stringify(list));
     }
@@ -68,5 +67,4 @@ export default class ListStorage {
         list.getProject(projectName).getTask(taskTitle).setIsComplete(value);
         this.saveList(list);
     }
-
 }

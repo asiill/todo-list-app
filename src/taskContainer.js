@@ -35,9 +35,11 @@ export default function createTaskContainer() {
     const taskCompleteBtn = document.createElement("button");
     taskCompleteBtn.classList.add("task-complete-btn");
     if (task.getIsComplete()) {
+        taskTitle.classList.add("task-complete");
         taskCompleteBtn.textContent = "Mark as incomplete";
     } else {
         taskCompleteBtn.textContent = "Mark as complete";
+        taskTitle.classList.add("task-incomplete");
     }
 
     const editTaskBtn = document.createElement("button");

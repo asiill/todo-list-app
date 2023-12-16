@@ -49,6 +49,7 @@ export default class TaskForm {
         description.setAttribute("name", "description");
         description.setAttribute("id", "description");
         description.setAttribute("placeholder", "description");
+        description.required = true;
 
         const dueDate = document.createElement("input");
         dueDate.setAttribute("type", "text");
@@ -65,6 +66,7 @@ export default class TaskForm {
         priority.setAttribute("name", "priority");
         priority.setAttribute("id", "priority");
         priority.setAttribute("placeholder", "priority");
+        priority.required = true;
 
         const submitTask = document.createElement("button");
         submitTask.setAttribute("type", "submit");

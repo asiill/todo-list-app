@@ -43,6 +43,9 @@ export default function createProjectContainer() {
     const editProjectBtn = document.createElement("button");
     editProjectBtn.textContent = "Edit project";
     editProjectBtn.classList.add("edit-project-btn");
+    const saveEditBtn = document.createElement("button");
+    saveEditBtn.textContent = "Save edit";
+    saveEditBtn.classList.add("save-edit-btn");
 
     const delProjectBtn = document.createElement("button");
     delProjectBtn.textContent = "Delete Project";
@@ -54,6 +57,21 @@ export default function createProjectContainer() {
 
     addTaskBtn.addEventListener("click", () => {
         taskForm.style.display = "block";
+    });
+
+    editProjectBtn.addEventListener("click", () => {
+        editProjectBtn.style.display = "none";
+        delProjectBtn.style.display = "none";
+        clearCompletedBtn.style.display = "none";
+        addTaskBtn.style.display = "none";
+        projectName.contentEditable = true;
+        projectName.focus();
+        projectActions.appendChild(saveEditBtn);
+    });
+
+    saveEditBtn.addEventListener("click", () => {
+        projectName.contentEditable = false;
+        Utils.editActiveProject(project.getName(), projectName.textContent);
     });
 
     delProjectBtn.addEventListener("click", () => {

@@ -44,21 +44,27 @@ export default class ListStorage {
         this.saveList(list);
     }
 
-    static setTaskTitle(projectName, taskTitle) {
+    static setTaskTitle(projectName, taskTitle, title) {
         let list = this.getList();
-        list.getProject(projectName).getTask(taskTitle).setTitle(taskTitle);
+        list.getProject(projectName).getTask(taskTitle).setTitle(title);
         this.saveList(list);
     }
 
-    static setTaskDescription(projectName, taskTitle, taskDescription) {
+    static setTaskDescription(projectName, taskTitle, description) {
         let list = this.getList();
-        list.getProject(projectName).getTask(taskTitle).setDescription(taskDescription);
+        list.getProject(projectName).getTask(taskTitle).setDescription(description);
         this.saveList(list);
     }
 
-    static setTaskDueDate(projectName, taskTitle, taskDueDate) {
+    static setTaskDueDate(projectName, taskTitle, dueDate) {
         let list = this.getList();
-        list.getProject(projectName).getTask(taskTitle).setDueDate(taskDueDate);
+        list.getProject(projectName).getTask(taskTitle).setDueDate(dueDate);
+        this.saveList(list);
+    }
+
+    static setTaskPriority(projectName, taskTitle, priority) {
+        let list = this.getList();
+        list.getProject(projectName).getTask(taskTitle).setPriority(priority);
         this.saveList(list);
     }
 

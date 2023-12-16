@@ -45,6 +45,9 @@ export default function createTaskContainer() {
     const editTaskBtn = document.createElement("button");
     editTaskBtn.textContent = "Edit task";
     editTaskBtn.classList.add("edit-task-btn");
+    const saveEditBtn = document.createElement("button");
+    saveEditBtn.textContent = "Save edit";
+    saveEditBtn.classList.add("save-edit-btn");
 
     const delTaskBtn = document.createElement("button");
     delTaskBtn.textContent = "Delete task";
@@ -58,11 +61,29 @@ export default function createTaskContainer() {
         }
     });
 
+    editTaskBtn.addEventListener("click", () => {
+        editTaskBtn.style.display = "none";
+        delTaskBtn.style.display = "none";
+        taskCompleteBtn.style.display = "none";
+        taskTitle.contentEditable = true;
+        taskDescription.contentEditable = true;
+        taskDueDate.contentEditable = true;
+        taskPriority.contentEditable = true;
+        taskTitle.focus();
+        taskActions.appendChild(saveEditBtn);
+    });
+
+    saveEditBtn.addEventListener("click", () => {
+        console.log(task.getTitle());
+        Utils.editActiveTask(task.getTitle(), taskTitle.textContent, taskDescription.textContent, taskDueDate.textContent, taskPriority.textContent)
+    });
+
     delTaskBtn.addEventListener("click", () => {
         Utils.deleteActiveTask();
     });
 
     taskActions.appendChild(taskCompleteBtn);
+    taskActions.appendChild(editTaskBtn);
     taskActions.appendChild(delTaskBtn);
 
     taskContainer.appendChild(taskTitle);

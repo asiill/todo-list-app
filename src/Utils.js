@@ -24,6 +24,15 @@ export default class Utils {
         return project;
     }
 
+    static editActiveTask(taskTitle, title, description, dueDate, priority) {
+        let projectName = this.getActiveName();
+        ListStorage.setTaskDescription(projectName, taskTitle, description);
+        ListStorage.setTaskDueDate(projectName, taskTitle, dueDate);
+        ListStorage.setTaskPriority(projectName, taskTitle, priority);
+        ListStorage.setTaskTitle(projectName, taskTitle, title);
+        createProjectContainer();
+    };
+
     static deleteActiveTask() {
         ListStorage.deleteTask(this.getActiveName(), this.getActiveTitle());
         createProjectContainer();

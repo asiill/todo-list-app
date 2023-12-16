@@ -162,7 +162,7 @@ form>input,textarea:focus {
     border: 1px solid #2e2ea1;
 }
   
-form>input:invalid {
+form>input,textarea:invalid {
     border: 1px solid #db1919;
     color: #db1919;
 }

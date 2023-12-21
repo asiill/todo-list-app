@@ -34,22 +34,41 @@ export default function createProjectContainer() {
     const taskForm = (new TaskForm()).createTaskForm();
 
     const addTaskBtn = document.createElement("button");
-    addTaskBtn.textContent = "+ new task";
     addTaskBtn.classList.add("add-task-btn");
+    const addText = document.createElement("span");
+    addText.textContent = "Add task";
+    const addImg = document.createElement("img");
+    addImg.src = "../dist/icons/add.svg";
+    addImg.alt="plus sign";
+    addTaskBtn.appendChild(addImg);
+    addTaskBtn.appendChild(addText);
 
     const projectActions = document.createElement("div");
     projectActions.classList.add("project-actions");
 
     const editProjectBtn = document.createElement("button");
-    editProjectBtn.textContent = "Edit project";
     editProjectBtn.classList.add("edit-project-btn");
+    const editImg = document.createElement("img");
+    editImg.src = "../dist/icons/edit.svg";
+    editImg.alt = "Edit project";
+    editImg.title="Edit project";
+    editProjectBtn.appendChild(editImg);
+
     const saveEditBtn = document.createElement("button");
-    saveEditBtn.textContent = "Save edit";
     saveEditBtn.classList.add("save-edit-btn");
+    const saveImg = document.createElement("img");
+    saveImg.src = "../dist/icons/check.svg";
+    saveImg.alt = "Save changes";
+    saveImg.title = "Save changes";
+    saveEditBtn.appendChild(saveImg);
 
     const delProjectBtn = document.createElement("button");
-    delProjectBtn.textContent = "Delete Project";
     delProjectBtn.classList.add("del-project-btn");
+    const delImg = document.createElement("img");
+    delImg.src = "../dist/icons/delete.svg";
+    delImg.alt = "Delete project";
+    delImg.title="Delete project";
+    delProjectBtn.appendChild(delImg);
 
     const clearCompletedBtn = document.createElement("button");
     clearCompletedBtn.textContent = "Clear completed tasks";

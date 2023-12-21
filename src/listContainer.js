@@ -32,7 +32,13 @@ export default function createListContainer() {
 
     const addProjectBtn = document.createElement("button");
     addProjectBtn.classList.add("add-project-btn");
-    addProjectBtn.textContent = "+ new project";
+    const addText = document.createElement("span");
+    addText.textContent = "Add project";
+    const addImg = document.createElement("img");
+    addImg.src = "../dist/icons/add.svg";
+    addImg.alt="plus sign";
+    addProjectBtn.appendChild(addImg);
+    addProjectBtn.appendChild(addText);
     addProjectBtn.addEventListener("click", () => {
         projectForm.style.display = "block";
     });

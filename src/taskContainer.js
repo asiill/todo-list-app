@@ -32,39 +32,53 @@ export default function createTaskContainer() {
     const taskActions = document.createElement("div");
     taskActions.classList.add("task-actions");
 
-    const taskCompleteBtn = document.createElement("button");
-    taskCompleteBtn.classList.add("task-complete-btn");
+    const taskCompleteBox = document.createElement("input");
+    taskCompleteBox.setAttribute("type", "checkbox");
+    taskCompleteBox.classList.add("task-complete-box");
     if (task.getIsComplete()) {
         taskTitle.classList.add("task-complete");
-        taskCompleteBtn.textContent = "Mark as incomplete";
+        taskCompleteBox.checked = true;
     } else {
-        taskCompleteBtn.textContent = "Mark as complete";
+        taskCompleteBox.checked = false;
         taskTitle.classList.add("task-incomplete");
     }
 
     const editTaskBtn = document.createElement("button");
-    editTaskBtn.textContent = "Edit task";
     editTaskBtn.classList.add("edit-task-btn");
+    const editImg = document.createElement("img");
+    editImg.src = "../dist/icons/edit.svg";
+    editImg.alt = "Edit task";
+    editImg.title="Edit task";
+    editTaskBtn.appendChild(editImg);
+
     const saveEditBtn = document.createElement("button");
-    saveEditBtn.textContent = "Save edit";
     saveEditBtn.classList.add("save-edit-btn");
+    const saveImg = document.createElement("img");
+    saveImg.src = "../dist/icons/check.svg";
+    saveImg.alt = "Save changes";
+    saveImg.title = "Save changes";
+    saveEditBtn.appendChild(saveImg);
 
     const delTaskBtn = document.createElement("button");
-    delTaskBtn.textContent = "Delete task";
     delTaskBtn.classList.add("del-task-btn");
+    const delImg = document.createElement("img");
+    delImg.src = "../dist/icons/delete.svg";
+    delImg.alt = "Delete task";
+    delImg.title="Delete task";
+    delTaskBtn.appendChild(delImg);
 
-    taskCompleteBtn.addEventListener("click", () => {
+    taskCompleteBox.addEventListener("change", () => {
         if (Utils.isTaskComplete()) {
-            taskCompleteBtn.textContent = "Mark as incomplete";
+            taskCompleteBox.checked = true;
         } else {
-            taskCompleteBtn.textContent = "Mark as complete";
+            taskCompleteBox.checked = false;
         }
     });
 
     editTaskBtn.addEventListener("click", () => {
         editTaskBtn.style.display = "none";
         delTaskBtn.style.display = "none";
-        taskCompleteBtn.style.display = "none";
+        taskCompleteContainer.style.display = "none";
         taskTitle.contentEditable = true;
         taskDescription.contentEditable = true;
         taskDueDate.contentEditable = true;
@@ -82,7 +96,11 @@ export default function createTaskContainer() {
         Utils.deleteActiveTask();
     });
 
-    taskActions.appendChild(taskCompleteBtn);
+    const taskCompleteContainer = document.createElement("div");
+    taskCompleteContainer.classList.add("task-complete-container");
+    taskCompleteContainer.appendChild(taskCompleteBox);
+
+    taskActions.appendChild(taskCompleteContainer);
     taskActions.appendChild(editTaskBtn);
     taskActions.appendChild(delTaskBtn);
 

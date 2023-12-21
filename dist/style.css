@@ -3,14 +3,81 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
 
+    background-color: rgb(248, 237, 235);
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    background-color: rgb(249, 220, 196);
+    border-radius: 0.6rem;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.548);
 }
 
 #content {
-    margin: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 40px;
+    gap: 2.4rem;
+
+    margin: 1.2rem;
+}
+
+/* Button styles */
+
+button {
+    padding: 0.6rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 1px solid transparent;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+button:hover {
+    border-color: rgb(240, 113, 103);
+    opacity: 0.8;
+}
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+
+.add-project-btn, .project-actions>button, .add-task-btn, .task-actions>button {
+    background-color: rgb(252, 213, 206);
+}
+
+.del-project-btn:hover, .del-task-btn:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+.add-project-btn, .add-task-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.add-project-btn>img, .add-task-btn>img {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.save-edit-btn>img {
+    width: 1.8rem;
+    height: 1.8rem;
 }
 
 /* List Container */
@@ -18,20 +85,17 @@ body {
 .list-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-
-.list-header {
+    gap: 0.6rem;
 }
 
 .project-list {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 0.3rem;
 }
 
-.add-project-btn {
-
+.project-list>button {
+    background-color: rgb(238, 168, 154);
 }
 
 .active-project {
@@ -40,55 +104,43 @@ body {
 
 /* Project Container */
 
-#project-form {
-    
-}
-
 .project-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.6rem;
 }
 
 .project-header {
     display: flex;
-    gap: 5px;
-}
-
-.project-name {
-
+    gap: 0.3rem;
 }
 
 .tasks-remaining {
-    font-size: 12px;
-    color: gray;
+    font-size: 0.8rem;
+    color: rgb(97, 96, 96);
 }
 
 .task-list {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 0.3rem;
 }
 
-.add-task-btn {
-
+.task-list>button {
+    background-color: #eea89a;
 }
 
 .project-actions {
     display: flex;
-    gap: 5px;
-}
-
-.clear-completed-btn {
-
-}
-
-.del-project-btn {
-
+    gap: 0.3rem;
 }
 
 .active-task {
     font-weight: bold;
+}
+
+.clear-completed-btn {
+    font-style: italic;
 }
 
 /* Task Container */
@@ -96,29 +148,13 @@ body {
 #task-form {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 0.3rem;
 }
 
 .task-container {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-}
-
-.task-title {
-
-}
-
-.task-description {
-
-}
-
-.task-due-date {
-
-}
-
-.task-priority {
-
+    gap: 0.3rem;
 }
 
 .task-priority:empty, .task-description:empty {
@@ -127,23 +163,31 @@ body {
 
 .task-actions {
     display: flex;
-    gap: 5px;
-}
-
-.task-complete-btn {
-
-}
-
-.del-task-btn {
-
-}
-
-.task-incomplete {
-    
+    gap: 0.3rem;
+    align-items: center;
 }
 
 .task-complete {
     text-decoration: line-through;
+}
+
+.task-complete-container {
+    padding: 0.6rem;
+    border: 1px solid transparent;
+    border-radius: 0.3rem;
+    background-color: rgb(252, 213, 206);
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+
+.task-complete-container:hover {
+    border-color: rgb(240, 113, 103);
+    opacity: 0.8;
+}
+
+input[type=checkbox] {
+    width: 1.9rem;
+    height: 1.9rem;
 }
 
 /* Task Form and Project Form */
@@ -151,33 +195,31 @@ body {
 form>input,textarea {
     background-color: #FFFFFF;
     border: 1px solid #E5E7EB;
-    border-radius: 3px;
+    border-radius: 0.3rem;
     width: 100%;
-    margin: 5px;
-    padding: 7px;
-    font-size: 12px;
+    margin: 0.3rem;
+    padding: 0.4rem;
+    font-size: 1rem;
 }
   
 form>input,textarea:focus {
-    border: 1px solid #2e2ea1;
+    border: 1px solid rgb(46, 46, 161);
 }
   
 form>input,textarea:invalid {
-    border: 1px solid #db1919;
-    color: #db1919;
+    border: 1px solid rgb(219, 25, 25);
+    color: rgb(219, 25, 25);
 }
 
 form>button {
-    margin: 5px;
-    padding: 7px;
-    font-size: 12px;
+    background-color: rgb(175, 138, 131);
 }
 
 #date-error {
-    font-size: 12px;
-    color: red;
-    margin: 5px;
-    padding: 7px;
+    font-size: 0.8rem;
+    color: rgb(255, 0, 0);
+    margin: 0.3rem;
+    padding: 0.4rem;
 }
 
 #date-error:empty {

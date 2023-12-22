@@ -38,7 +38,7 @@ export default function createProjectContainer() {
     const addText = document.createElement("span");
     addText.textContent = "Add task";
     const addImg = document.createElement("img");
-    addImg.src = "dist/icons/add.svg";
+    addImg.src = "./icons/add.svg";
     addImg.alt="plus sign";
     addTaskBtn.appendChild(addImg);
     addTaskBtn.appendChild(addText);
@@ -49,7 +49,7 @@ export default function createProjectContainer() {
     const editProjectBtn = document.createElement("button");
     editProjectBtn.classList.add("edit-project-btn");
     const editImg = document.createElement("img");
-    editImg.src = "../dist/icons/edit.svg";
+    editImg.src = "./icons/edit.svg";
     editImg.alt = "Edit project";
     editImg.title="Edit project";
     editProjectBtn.appendChild(editImg);
@@ -57,7 +57,7 @@ export default function createProjectContainer() {
     const saveEditBtn = document.createElement("button");
     saveEditBtn.classList.add("save-edit-btn");
     const saveImg = document.createElement("img");
-    saveImg.src = "../dist/icons/check.svg";
+    saveImg.src = "./icons/check.svg";
     saveImg.alt = "Save changes";
     saveImg.title = "Save changes";
     saveEditBtn.appendChild(saveImg);
@@ -65,7 +65,7 @@ export default function createProjectContainer() {
     const delProjectBtn = document.createElement("button");
     delProjectBtn.classList.add("del-project-btn");
     const delImg = document.createElement("img");
-    delImg.src = "../dist/icons/delete.svg";
+    delImg.src = "./icons/delete.svg";
     delImg.alt = "Delete project";
     delImg.title="Delete project";
     delProjectBtn.appendChild(delImg);

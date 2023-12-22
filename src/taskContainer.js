@@ -46,7 +46,7 @@ export default function createTaskContainer() {
     const editTaskBtn = document.createElement("button");
     editTaskBtn.classList.add("edit-task-btn");
     const editImg = document.createElement("img");
-    editImg.src = "../dist/icons/edit.svg";
+    editImg.src = "./icons/edit.svg";
     editImg.alt = "Edit task";
     editImg.title="Edit task";
     editTaskBtn.appendChild(editImg);
@@ -54,7 +54,7 @@ export default function createTaskContainer() {
     const saveEditBtn = document.createElement("button");
     saveEditBtn.classList.add("save-edit-btn");
     const saveImg = document.createElement("img");
-    saveImg.src = "../dist/icons/check.svg";
+    saveImg.src = "./icons/check.svg";
     saveImg.alt = "Save changes";
     saveImg.title = "Save changes";
     saveEditBtn.appendChild(saveImg);
@@ -62,7 +62,7 @@ export default function createTaskContainer() {
     const delTaskBtn = document.createElement("button");
     delTaskBtn.classList.add("del-task-btn");
     const delImg = document.createElement("img");
-    delImg.src = "../dist/icons/delete.svg";
+    delImg.src = "./icons/delete.svg";
     delImg.alt = "Delete task";
     delImg.title="Delete task";
     delTaskBtn.appendChild(delImg);

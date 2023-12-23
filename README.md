@@ -3,12 +3,16 @@ A Javascript todo list application.
 
 ##  Features
 Create and edit projects
+
 Assign tasks to projects
 
 ## Built with
 HTML | CSS
+
 Javascript
+
 [webpack](https://webpack.js.org/)
+
 [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
 ## Screenshot

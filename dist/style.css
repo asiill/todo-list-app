@@ -42,12 +42,8 @@ button {
 }
 
 button:hover {
-    border-color: rgb(240, 113, 103);
+    border-color: rgb(0, 0, 0);
     opacity: 0.8;
-}
-button:focus,
-button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
 }
 
 .add-project-btn, .project-actions>button, .add-task-btn, .task-actions>button {

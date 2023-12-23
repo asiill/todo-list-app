@@ -208,7 +208,8 @@ form>input,textarea:invalid {
 }
 
 form>button {
-    background-color: rgb(175, 138, 131);
+    background-color: rgb(221, 168, 157);
+    margin: 5px 0 0 5px;
 }
 
 #date-error {

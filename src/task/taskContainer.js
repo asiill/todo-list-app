@@ -1,4 +1,4 @@
-import Utils from "./Utils.js";
+import Utils from "../Utils.js";
 
 export default function createTaskContainer() {
     let task = Utils.getActiveTask();

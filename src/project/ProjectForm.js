@@ -1,6 +1,6 @@
 import Project from "./Project.js";
-import ListStorage from "./ListStorage.js";
-import createListContainer from "./listContainer.js";
+import ListStorage from "../ListStorage.js";
+import createListContainer from "../list/listContainer.js";
 
 export default class ProjectForm {
     constructor() {

@@ -1,5 +1,5 @@
-import Utils from "./Utils.js";
-import ProjectForm from "./ProjectForm.js";
+import Utils from "../Utils.js";
+import ProjectForm from "../project/ProjectForm.js";
 
 export default function createListContainer() {
     const content = document.getElementById("content");

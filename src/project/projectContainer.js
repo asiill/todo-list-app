@@ -1,5 +1,5 @@
-import Utils from "./Utils.js";
-import TaskForm from "./TaskForm.js";
+import Utils from "../Utils.js";
+import TaskForm from "../task/TaskForm.js";
 
 export default function createProjectContainer() {
     let project = Utils.getActiveProject();

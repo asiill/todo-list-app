@@ -1,3 +1,3 @@
-import createListContainer from "./listContainer.js";
+import createListContainer from "./list/listContainer.js";
 
 createListContainer();

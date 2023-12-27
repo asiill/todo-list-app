@@ -1,6 +1,6 @@
-import List from "./List.js";
-import Project from "./Project.js";
-import Task from "./Task.js";
+import List from "./list/List.js";
+import Project from "./project/Project.js";
+import Task from "./task/Task.js";
 
 export default class ListStorage {
     static saveList(list) {

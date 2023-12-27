@@ -1,7 +1,7 @@
 import ListStorage from "./ListStorage.js";
-import createTaskContainer from "./taskContainer.js";
-import createProjectContainer from "./projectContainer.js";
-import createListContainer from "./listContainer.js";
+import createTaskContainer from "./task/taskContainer.js";
+import createProjectContainer from "./project/projectContainer.js";
+import createListContainer from "./list/listContainer.js";
 
 export default class Utils {
     static getActiveTitle() {

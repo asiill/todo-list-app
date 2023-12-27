@@ -1,7 +1,7 @@
 import Task from "./Task.js";
-import ListStorage from "./ListStorage.js";
-import createProjectContainer from "./projectContainer.js";
-import Utils from "./Utils.js";
+import ListStorage from "../ListStorage.js";
+import createProjectContainer from "../project/projectContainer.js";
+import Utils from "../Utils.js";
 
 export default class TaskForm {
     constructor() {

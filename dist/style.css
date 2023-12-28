@@ -111,6 +111,10 @@ img {
     gap: 0.3rem;
 }
 
+.project-name {
+    min-width: 0;
+}
+
 .tasks-remaining {
     font-size: 0.8rem;
     color: rgb(97, 96, 96);
@@ -151,6 +155,10 @@ img {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
+}
+
+.task-title {
+    min-width: 0;
 }
 
 .task-actions {

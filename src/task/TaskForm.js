@@ -20,7 +20,7 @@ export default class TaskForm {
         let dueDate = this.taskForm.dueDate.value;
 
         if (!Utils.validateDueDate(dueDate)) {
-            this.taskForm.children[3].textContent = "*Please enter a valid due date: yyyy/mm/dd";
+            this.taskForm.children[3].textContent = "* This date has already passed";
             return;
         } else {
             let task = new Task(title, description, dueDate);

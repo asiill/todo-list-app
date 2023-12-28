@@ -62,12 +62,6 @@ export default class ListStorage {
         this.saveList(list);
     }
 
-    static setTaskPriority(projectName, taskTitle, priority) {
-        let list = this.getList();
-        list.getProject(projectName).getTask(taskTitle).setPriority(priority);
-        this.saveList(list);
-    }
-
     static setTaskIsComplete(projectName, taskTitle, value) {
         let list = this.getList();
         list.getProject(projectName).getTask(taskTitle).setIsComplete(value);

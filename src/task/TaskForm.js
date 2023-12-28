@@ -18,13 +18,12 @@ export default class TaskForm {
         let title = this.taskForm.title.value;
         let description = this.taskForm.description.value;
         let dueDate = this.taskForm.dueDate.value;
-        let priority = this.taskForm.priority.value;
 
         if (!Utils.validateDueDate(dueDate)) {
             this.taskForm.children[3].textContent = "*Please enter a valid due date: yyyy/mm/dd";
             return;
         } else {
-            let task = new Task(title, description, dueDate, priority);
+            let task = new Task(title, description, dueDate);
             let projectName = document.querySelector(".project-name").textContent;
     
             ListStorage.addTask(projectName, task);
@@ -61,13 +60,6 @@ export default class TaskForm {
         const dateError = document.createElement("p");
         dateError.setAttribute("id", "date-error");
 
-        const priority = document.createElement("input");
-        priority.setAttribute("type", "text");
-        priority.setAttribute("name", "priority");
-        priority.setAttribute("id", "priority");
-        priority.setAttribute("placeholder", "priority");
-        priority.required = true;
-
         const submitTask = document.createElement("button");
         submitTask.setAttribute("type", "submit");
         submitTask.textContent = "Submit";
@@ -76,7 +68,6 @@ export default class TaskForm {
         this.taskForm.appendChild(description);
         this.taskForm.appendChild(dueDate);
         this.taskForm.appendChild(dateError);
-        this.taskForm.appendChild(priority);
         this.taskForm.appendChild(submitTask);
         this.taskForm.style.display = "none";
         this.taskForm.addEventListener("submit", (e) => {

@@ -24,10 +24,6 @@ export default function createTaskContainer() {
     const taskDueDate = document.createElement("p");
     taskDueDate.classList.add("task-due-date");
     taskDueDate.textContent = task.getDueDate();
-    
-    const taskPriority = document.createElement("p");
-    taskPriority.classList.add("task-priority");
-    taskPriority.textContent = task.getPriority();
 
     const taskActions = document.createElement("div");
     taskActions.classList.add("task-actions");
@@ -82,14 +78,13 @@ export default function createTaskContainer() {
         taskTitle.contentEditable = true;
         taskDescription.contentEditable = true;
         taskDueDate.contentEditable = true;
-        taskPriority.contentEditable = true;
         taskTitle.focus();
         taskActions.appendChild(saveEditBtn);
     });
 
     saveEditBtn.addEventListener("click", () => {
         console.log(task.getTitle());
-        Utils.editActiveTask(task.getTitle(), taskTitle.textContent, taskDescription.textContent, taskDueDate.textContent, taskPriority.textContent)
+        Utils.editActiveTask(task.getTitle(), taskTitle.textContent, taskDescription.textContent, taskDueDate.textContent)
     });
 
     delTaskBtn.addEventListener("click", () => {
@@ -107,7 +102,6 @@ export default function createTaskContainer() {
     taskContainer.appendChild(taskTitle);
     taskContainer.appendChild(taskDescription);
     taskContainer.appendChild(taskDueDate);
-    taskContainer.appendChild(taskPriority);
     taskContainer.appendChild(taskActions);
 
     content.appendChild(taskContainer);

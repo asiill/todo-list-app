@@ -153,10 +153,6 @@ img {
     gap: 0.3rem;
 }
 
-.task-priority:empty, .task-description:empty {
-    display: none;
-}
-
 .task-actions {
     display: flex;
     gap: 0.3rem;

@@ -51,7 +51,7 @@ export default class TaskForm {
         description.required = true;
 
         const dueDate = document.createElement("input");
-        dueDate.setAttribute("type", "text");
+        dueDate.setAttribute("type", "date");
         dueDate.setAttribute("name", "dueDate");
         dueDate.setAttribute("id", "dueDate");
         dueDate.setAttribute("placeholder", "yyyy/mm/dd");

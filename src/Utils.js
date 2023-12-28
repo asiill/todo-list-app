@@ -56,6 +56,11 @@ export default class Utils {
             const el = document.createElement("button");
             el.textContent = project.getName();
             el.addEventListener("click", () => {
+                let projectForm = document.getElementById("project-form");
+                if (projectForm.style.display = "block") {
+                    projectForm.style.display = "none";
+                }
+
                 if (document.body.contains(document.querySelector(".active-project"))) {
                     let activeProject = document.querySelector(".active-project");
                     activeProject.classList.remove("active-project");
@@ -79,6 +84,11 @@ export default class Utils {
                 el.classList.add("task-complete");
             }
             el.addEventListener ("click", () => {
+                let taskForm = document.getElementById("task-form");
+                if (taskForm.style.display = "block") {
+                    taskForm.style.display = "none";
+                }
+
                 if (document.body.contains(document.querySelector(".active-task"))) {
                     let activeTask = document.querySelector(".active-task");
                     activeTask.classList.remove("active-task");

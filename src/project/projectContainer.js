@@ -75,6 +75,10 @@ export default function createProjectContainer() {
     clearCompletedBtn.classList.add("clear-completed-btn");
 
     addTaskBtn.addEventListener("click", () => {
+        if (document.body.contains(document.querySelector(".task-container"))) {
+            let taskContainer = document.querySelector(".task-container");
+            content.removeChild(taskContainer);
+        }
         taskForm.style.display = "block";
     });
 

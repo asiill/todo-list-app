@@ -40,6 +40,14 @@ export default function createListContainer() {
     addProjectBtn.appendChild(addImg);
     addProjectBtn.appendChild(addText);
     addProjectBtn.addEventListener("click", () => {
+        if (document.body.contains(document.querySelector(".project-container"))) {
+            let projectContainer = document.querySelector(".project-container");
+            content.removeChild(projectContainer);
+        }
+        if (document.body.contains(document.querySelector(".task-container"))) {
+            let taskContainer = document.querySelector(".task-container");
+            content.removeChild(taskContainer);
+        }
         projectForm.style.display = "block";
     });
 

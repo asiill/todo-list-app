@@ -177,7 +177,7 @@ img {
 }
 
 .task-complete-container:hover {
-    border-color: rgb(240, 113, 103);
+    border-color: rgb(0, 0, 0);
     opacity: 0.8;
 }
 

@@ -171,6 +171,7 @@ img {
 
 .task-description {
     overflow-wrap: break-word;
+    resize: vertical;
 }
 
 .task-actions {

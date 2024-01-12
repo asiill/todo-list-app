@@ -171,7 +171,6 @@ img {
 
 .task-description {
     overflow-wrap: break-word;
-    resize: vertical;
 }
 
 .task-actions {
@@ -204,6 +203,10 @@ input[type=checkbox] {
 }
 
 /* Task Form and Project Form */
+
+textarea {
+    resize: vertical;
+}
 
 form>input,textarea {
     background-color: #FFFFFF;

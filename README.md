@@ -5,7 +5,7 @@ A Javascript todo list application.
 https://asiill.github.io/todo-list-app/
 
 ## Screenshot
-![todoListApp](https://github.com/asiill/todo-list-app/assets/9745019/162ca5d4-2d89-471b-8306-92b69eb1650a)
+![todolistapp](https://github.com/asiill/todo-list-app/assets/9745019/9ec2890d-69f2-4eff-8a54-a6a1015fddc0)
 
 ##  Features
 * Create and edit projects

@@ -90,6 +90,8 @@ img {
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
+
+    padding: 1rem;
 }
 
 .project-list {

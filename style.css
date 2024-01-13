@@ -218,7 +218,7 @@ textarea {
     resize: vertical;
 }
 
-form>input,textarea {
+form input,textarea {
     background-color: #FFFFFF;
     border: 1px solid #E5E7EB;
     border-radius: 0.3rem;
@@ -229,18 +229,22 @@ form>input,textarea {
     font-family: var(--ff-base);
 }
   
-form>input,textarea:focus {
+form input,textarea:focus {
     border: 1px solid rgb(46, 46, 161);
 }
   
-form>input,textarea:invalid {
+form input,textarea:invalid {
     border: 1px solid rgb(219, 25, 25);
     color: rgb(219, 25, 25);
 }
 
-form>button {
+form button {
     background-color: rgb(221, 168, 157);
     margin: 5px 0 0 5px;
+}
+
+.form-btn-container {
+    display: flex;
 }
 
 #date-error {

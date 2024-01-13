@@ -37,11 +37,6 @@ export default class Utils {
         createProjectContainer();
     }
 
-    static editActiveProject(projectName, name) {
-        ListStorage.setProjectName(projectName, name);
-        createListContainer();
-    }
-
     static deleteActiveProject() {
         ListStorage.deleteProject(this.getActiveName());
         createListContainer();

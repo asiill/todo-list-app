@@ -1,4 +1,5 @@
 import Utils from "../Utils.js";
+import ProjectForm from "./ProjectForm.js";
 import TaskForm from "../task/TaskForm.js";
 
 export default function createProjectContainer() {
@@ -31,6 +32,7 @@ export default function createProjectContainer() {
     const taskList = Utils.getTaskList();
     taskList.classList.add("task-list");
 
+    const projectForm = new ProjectForm();
     const taskForm = (new TaskForm()).createTaskForm();
 
     const addTaskBtn = document.createElement("button");
@@ -83,18 +85,7 @@ export default function createProjectContainer() {
     });
 
     editProjectBtn.addEventListener("click", () => {
-        editProjectBtn.style.display = "none";
-        delProjectBtn.style.display = "none";
-        clearCompletedBtn.style.display = "none";
-        addTaskBtn.style.display = "none";
-        projectName.contentEditable = true;
-        projectName.focus();
-        projectActions.appendChild(saveEditBtn);
-    });
-
-    saveEditBtn.addEventListener("click", () => {
-        projectName.contentEditable = false;
-        Utils.editActiveProject(project.getName(), projectName.textContent);
+        projectForm.openForm(project);
     });
 
     delProjectBtn.addEventListener("click", () => {
@@ -117,6 +108,7 @@ export default function createProjectContainer() {
     projectContainer.appendChild(addTaskBtn);
     projectContainer.appendChild(projectActions);
     projectContainer.appendChild(taskForm);
+    projectContainer.appendChild(projectForm.createProjectForm());
 
     content.appendChild(projectContainer);
 }

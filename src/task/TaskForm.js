@@ -8,10 +8,19 @@ export default class TaskForm {
         this.taskForm = document.createElement("form");
     }
 
-    resetTaskForm() {
+    openForm(existingTask) {
+        if(existingTask) {
+            this.taskForm.title.value = existingTask.getTitle();
+            this.taskForm.description.value = existingTask.getDescription();
+            this.taskForm.dueDate.value = existingTask.getDueDate();
+        }
+
+        this.taskForm.style.display = "block";
+    }
+
+    closeForm() {
         this.taskForm.style.display = "none";
         this.taskForm.reset();
-        this.taskForm.children[3].textContent = "";
     }
 
     addTaskToProject() {
@@ -19,23 +28,34 @@ export default class TaskForm {
         let description = this.taskForm.description.value;
         let dueDate = this.taskForm.dueDate.value;
 
-        if (!Utils.validateDueDate(dueDate)) {
-            this.taskForm.children[3].textContent = "* This date has already passed";
-            return;
+        if (document.body.contains(document.querySelector(".active-task"))) {
+            let activeTask = Utils.getActiveTask();
+            let activeTitle = activeTask.getTitle();
+            
+            let activeProject = Utils.getActiveProject();
+            let activeName = activeProject.getName();
+            
+            ListStorage.setTaskDescription(activeName, activeTitle, description);
+            ListStorage.setTaskDueDate(activeName, activeTitle, dueDate);
+            ListStorage.setTaskTitle(activeName, activeTitle, title);
         } else {
             let task = new Task(title, description, dueDate);
             let projectName = document.querySelector(".project-name").textContent;
     
             ListStorage.addTask(projectName, task);
-            createProjectContainer();
         }
-        this.resetTaskForm();
+
+        this.closeForm();
+        createProjectContainer();
     }
 
     createTaskForm() {
-        this.taskForm.setAttribute("id", "task-form");
+        this.taskForm.classList.add("task-form");
         this.taskForm.setAttribute("action", "''");
         this.taskForm.setAttribute("method", "get");
+
+        const formTitle = document.createElement("h3");
+        formTitle.textContent = "Task details";
 
         const title = document.createElement("input");
         title.setAttribute("type", "text");
@@ -57,18 +77,28 @@ export default class TaskForm {
         dueDate.setAttribute("placeholder", "yyyy/mm/dd");
         dueDate.required = true;
 
-        const dateError = document.createElement("p");
-        dateError.setAttribute("id", "date-error");
-
         const submitTask = document.createElement("button");
         submitTask.setAttribute("type", "submit");
         submitTask.textContent = "Submit";
 
+        const cancelBtn = document.createElement("button");
+        cancelBtn.textContent = "Cancel";
+        cancelBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            this.closeForm();
+        });
+
+        const btnContainer = document.createElement("div");
+        btnContainer.classList.add("form-btn-container");
+
+        btnContainer.appendChild(submitTask);
+        btnContainer.appendChild(cancelBtn);
+
+        this.taskForm.appendChild(formTitle);
         this.taskForm.appendChild(title);
         this.taskForm.appendChild(description);
         this.taskForm.appendChild(dueDate);
-        this.taskForm.appendChild(dateError);
-        this.taskForm.appendChild(submitTask);
+        this.taskForm.appendChild(btnContainer);
         this.taskForm.style.display = "none";
         this.taskForm.addEventListener("submit", (e) => {
             e.preventDefault();

@@ -1,7 +1,11 @@
 import Utils from "../Utils.js";
+import TaskForm from "./TaskForm.js";
 
 export default function createTaskContainer() {
     let task = Utils.getActiveTask();
+
+    const taskForm = new TaskForm();
+
     const content = document.getElementById("content");
 
     let taskContainer;
@@ -72,19 +76,12 @@ export default function createTaskContainer() {
     });
 
     editTaskBtn.addEventListener("click", () => {
-        editTaskBtn.style.display = "none";
-        delTaskBtn.style.display = "none";
-        taskCompleteContainer.style.display = "none";
-        taskTitle.contentEditable = true;
-        taskDescription.contentEditable = true;
-        taskDueDate.contentEditable = true;
-        taskTitle.focus();
-        taskActions.appendChild(saveEditBtn);
-    });
+        if (document.body.contains(document.querySelector(".project-form"))) {
+            let projectForm = document.querySelectorAll(".project-form");
+            projectForm.forEach((form) => {form.style.display = "none";});
+        }
 
-    saveEditBtn.addEventListener("click", () => {
-        console.log(task.getTitle());
-        Utils.editActiveTask(task.getTitle(), taskTitle.textContent, taskDescription.textContent, taskDueDate.textContent)
+        taskForm.openForm(task);
     });
 
     delTaskBtn.addEventListener("click", () => {
@@ -103,6 +100,7 @@ export default function createTaskContainer() {
     taskContainer.appendChild(taskDescription);
     taskContainer.appendChild(taskDueDate);
     taskContainer.appendChild(taskActions);
+    taskContainer.appendChild(taskForm.createTaskForm());
 
     content.appendChild(taskContainer);
 }

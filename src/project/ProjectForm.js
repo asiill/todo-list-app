@@ -24,11 +24,10 @@ export default class ProjectForm {
     addProjectToList() {
         let name = this.projectForm.name.value;
         
-        let list = ListStorage.getList();
-        let activeProject = Utils.getActiveProject();
-        let projectExists = list.isInProjects(activeProject.getName());
-
-        if (projectExists) {
+        if (document.contains(document.querySelector(".active-project"))) {
+            //let list = ListStorage.getList();
+            //let projectExists = list.isInProjects(activeProject.getName());
+            let activeProject = Utils.getActiveProject();
             ListStorage.setProjectName(activeProject.getName(), name);
         } else {
             let project = new Project(name);
@@ -40,9 +39,12 @@ export default class ProjectForm {
     }
 
     createProjectForm() {
-        this.projectForm.setAttribute("id", "project-form");
+        this.projectForm.classList.add("project-form");
         this.projectForm.setAttribute("action", "''");
         this.projectForm.setAttribute("method", "get");
+
+        const formTitle = document.createElement("h3");
+        formTitle.textContent = "Project details";
         
         const name = document.createElement("input");
         name.setAttribute("type", "text");
@@ -68,6 +70,7 @@ export default class ProjectForm {
         btnContainer.appendChild(submitProjectBtn);
         btnContainer.appendChild(cancelBtn);
 
+        this.projectForm.appendChild(formTitle);
         this.projectForm.appendChild(name);
         this.projectForm.appendChild(btnContainer);
         this.projectForm.style.display = "none";

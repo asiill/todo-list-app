@@ -51,7 +51,7 @@ export default class Utils {
             const el = document.createElement("button");
             el.textContent = project.getName();
             el.addEventListener("click", () => {
-                let projectForm = document.getElementById("project-form");
+                let projectForm = document.querySelector(".project-form");
                 if (projectForm.style.display = "block") {
                     projectForm.style.display = "none";
                 }
@@ -79,15 +79,21 @@ export default class Utils {
                 el.classList.add("task-complete");
             }
             el.addEventListener ("click", () => {
-                let taskForm = document.getElementById("task-form");
+                let taskForm = document.querySelector(".task-form");
                 if (taskForm.style.display = "block") {
                     taskForm.style.display = "none";
+                }
+
+                if (document.body.contains(document.querySelector(".project-form"))) {
+                    let projectForm = document.querySelectorAll(".project-form");
+                    projectForm.forEach(form => {form.style.display = "none"});
                 }
 
                 if (document.body.contains(document.querySelector(".active-task"))) {
                     let activeTask = document.querySelector(".active-task");
                     activeTask.classList.remove("active-task");
                 }
+                
                 el.classList.add("active-task");
                 createTaskContainer();
             })

@@ -22,7 +22,7 @@ export default function createProjectContainer() {
     const projectHeader = document.createElement("div");
     projectHeader.classList.add("project-header");
 
-    const projectName = document.createElement("h1");
+    const projectName = document.createElement("h2");
     projectName.classList.add("project-name");
     projectName.textContent = project.getName();
     
@@ -77,14 +77,30 @@ export default function createProjectContainer() {
     clearCompletedBtn.classList.add("clear-completed-btn");
 
     addTaskBtn.addEventListener("click", () => {
+        if (document.body.contains(document.querySelector(".project-form"))) {
+            let projectForm = document.querySelectorAll(".project-form");
+            projectForm.forEach((form) => {form.style.display = "none";});
+        }
+
         if (document.body.contains(document.querySelector(".task-container"))) {
             let taskContainer = document.querySelector(".task-container");
             content.removeChild(taskContainer);
         }
+
         taskForm.style.display = "block";
     });
 
     editProjectBtn.addEventListener("click", () => {
+        if (document.body.contains(document.querySelector(".task-form"))) {
+            let taskForm = document.querySelector(".task-form");
+            taskForm.style.display = "none";
+        }
+
+        if (document.body.contains(document.querySelector(".task-container"))) {
+            let taskContainer = document.querySelector(".task-container");
+            content.removeChild(taskContainer);
+        }
+        
         projectForm.openForm(project);
     });
 

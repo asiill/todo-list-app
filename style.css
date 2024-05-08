@@ -34,6 +34,7 @@ body {
     gap: 2rem;
 
     margin: 1.2rem;
+    margin-bottom: 150px;
 }
 
 /* Button styles */
@@ -251,4 +252,25 @@ form button {
 
 .form-btn-container {
     display: flex;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0.5rem;
+    text-align: center;
+    font-size: var(--fs-base);
+    font-family: var(--ff-base);
+    background-color: rgb(241, 228, 226);
+}
+
+footer svg {
+    width: 20px;
+    height: 20px;
 }
